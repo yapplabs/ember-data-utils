@@ -1,3 +1,5 @@
+/** @documenter esdoc */
+
 import Component from '@ember/component';
 import layout from './template';
 import { parseQueryToFunction } from 'ember-data-utils/utils/parse-query-to-function';
@@ -6,6 +8,29 @@ import { sort } from '@ember/object/computed';
 import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 
+/**
+   A component to fetch data from your api
+
+   ```handlebars
+    <QueryData
+      @modelType='app-page-profile'
+      @sortBy={{array 'createdAt:desc'}}
+      @query={{hash pageId=@page.id}}
+    as |data|>
+        ...
+    </QueryData>
+    ```
+    @argument {string} modelType - name of the ember data model
+    @argument {array} sortBy - Array of keys to sort by
+    @argument {object} query - Object of values to query against the server
+    @argument {function} onModelsLoaded - Callback that is fired when models are loaded
+
+    @yield {object} data
+    @yield {boolean} data.isLoading
+    @yield {boolean} data.isEmpty
+    @yield {array} data.sortedModels - The models returned by the api, sorted
+    @yield {Action} data.refresh - Action method to trigger the component to refresh the data
+*/
 export default Component.extend({
   layout,
 
@@ -34,7 +59,7 @@ export default Component.extend({
     if (this.onModelsLoaded) { this.onModelsLoaded(); }
   }).keepLatest(),
 
-  filteredModels: computed( 'liveRecordArray.[]', 'query', 'isLoading', function() {
+  filteredModels: computed('liveRecordArray.[]', 'query', 'isLoading', function() {
       let filterFn = this.buildFilterFunction(this.query);
 
       return this.liveRecordArray.filter(filterFn);

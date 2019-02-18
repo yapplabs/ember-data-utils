@@ -1,7 +1,11 @@
+/** @documenter esdoc */
 import DS from 'ember-data';
 import { camelize } from '@ember/string';
 import { isEmpty } from '@ember/utils';
 
+/**
+ * Test
+ */
 export default DS.JSONAPIAdapter.extend({
   supportedFilters: [], // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
   include: [], // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
