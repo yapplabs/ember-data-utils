@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import layout from './template';
-import { parseQueryToFunction } from 'ember-data-utils/utils/parse-query-to-function';
+import { parseQueryToFunction } from 'ember-data-utils/utils';
 import { computed } from '@ember/object';
 import { sort } from '@ember/object/computed';
 import { task } from 'ember-concurrency';
