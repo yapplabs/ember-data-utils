@@ -5,7 +5,7 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "git@github.com:yapplabs/ember-data-utils.git",
   "license": "MIT",
   "author": "",
   "directories": {
