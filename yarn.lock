@@ -4436,6 +4436,18 @@ ember-cli-addon-docs-esdoc@^0.2.1:
     tmp "^0.0.33"
     walk-sync "^0.3.2"
 
+ember-cli-addon-docs-yuidoc@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ember-cli-addon-docs-yuidoc/-/ember-cli-addon-docs-yuidoc-0.2.1.tgz#af6a29c2b3efba3bffd5a017d6ad53c5a3b0eebe"
+  integrity sha512-f59EsqBB4TPI6TlCvMsLfmj5JREvZsz+0G3w8Pn8QxfYGin8jGPY2STA59twk8GGgR0yoaMziJvX/qYD2ZmqOw==
+  dependencies:
+    broccoli-caching-writer "^3.0.3"
+    ember-cli-babel "^6.6.0"
+    fs-extra "^5.0.0"
+    json-api-serializer "^1.11.0"
+    lodash "^4.17.5"
+    yuidocjs "^0.10.2"
+
 ember-cli-addon-docs@^0.6.4:
   version "0.6.4"
   resolved "https://registry.yarnpkg.com/ember-cli-addon-docs/-/ember-cli-addon-docs-0.6.4.tgz#96dee16cadea442f21b97ec79dd4fc50694379d7"
@@ -5517,7 +5529,7 @@ esdoc-ecmascript-proposal-plugin@^1.0.0:
   resolved "https://registry.yarnpkg.com/esdoc-ecmascript-proposal-plugin/-/esdoc-ecmascript-proposal-plugin-1.0.0.tgz#390dc5656ba8a2830e39dba3570d79138df2ffd9"
   integrity sha1-OQ3FZWuoooMOOdujVw15E43y/9k=
 
-"esdoc@github:pzuraq/esdoc#015a342":
+esdoc@pzuraq/esdoc#015a342:
   version "1.0.4"
   resolved "https://codeload.github.com/pzuraq/esdoc/tar.gz/015a3426b2e53b2b0270a9c00133780db3f1d144"
   dependencies:
