@@ -33,7 +33,7 @@ export default DS.JSONAPIAdapter.extend({
   supportedFilters: [], // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
 
   /**
-    List of includes to always include when querying a particular model.
+    Array of includes to always include when querying a particular model.
     Extend your base class for specific models to declare. 
     
     @field {Array} include
@@ -54,6 +54,31 @@ export default DS.JSONAPIAdapter.extend({
     jsonApiQuery = this._applyIncludes(jsonApiQuery);
 
     return this._super(store, type, jsonApiQuery);
+  },
+
+  /**
+   * queryRecord and findRecord use buildQuery to add includes to
+   * api calls. This override adds an adapters configured set of
+   * default includes
+   * 
+   * @method buildQuery
+   * @param {object} snapshot 
+   * @return {object} Mutated query object
+   */
+  buildQuery(snapshot) {
+    let { include } = this;
+    let query = this._super(snapshot);
+
+    if (!include.length) {
+      return query;
+    }
+
+    let existingIncludes = query.include && query.include.split(',') || [];
+    let combinedUniqueIncludes = [...new Set(existingIncludes.concat(include))];
+
+    query.include = combinedUniqueIncludes.join(',');
+    
+    return query;
   },
 
   /**
