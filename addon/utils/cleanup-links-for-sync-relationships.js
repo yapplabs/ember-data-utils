@@ -41,5 +41,9 @@ export function hasLinks(relationships) {
 export function isRelationshipSync(modelClass, relationshipName) {
   let relationship = modelClass.relationshipsByName.get(relationshipName);
 
+  if (relationship.options.async === undefined) {
+    return false; // Relationships default to async
+  }
+
   return !relationship.options.async;
 }
