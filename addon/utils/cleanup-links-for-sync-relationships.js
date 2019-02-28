@@ -25,7 +25,7 @@ export default function cleanupLinksForSyncRelationships(modelClass, relationshi
 
 /**
  * @public
- * @method _hasLinks
+ * @method hasLinks
  * @param {object} relationships 
  */
 export function hasLinks(relationships) {
@@ -34,7 +34,7 @@ export function hasLinks(relationships) {
 
 /**
  * @public
- * @method _isRelationshipSync
+ * @method isRelationshipSync
  * @param {EmberDataModel} modelClass the ember-data model class
  * @param {string} relationshipName 
  */

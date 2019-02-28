@@ -2,6 +2,7 @@
 import { get } from '@ember/object';
 
 /**
+  @method parseQueryToFunction
   @param {object} query - Object to filter an array by
   @return {Function} Function to pass to filter method
 */
