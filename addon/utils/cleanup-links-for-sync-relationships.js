@@ -11,7 +11,7 @@
  * @param {EmberDataModel} modelClass the ember-data model class
  * @param {object} resourceHash 
  */
-export default function cleanupLinks(modelClass, relationshipHash) {
+export default function cleanupLinksForSyncRelationships(modelClass, relationshipHash) {
   for (let relationshipName in relationshipHash) {
     let { links } = relationshipHash[relationshipName];
 

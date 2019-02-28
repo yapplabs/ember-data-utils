@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { cleanupLinks, hasLinks } from 'ember-data-utils/utils'
+import { cleanupLinksForSyncRelationships, hasLinks } from 'ember-data-utils/utils'
 
 /**
   Class to set as your ApplicationSerializer.
@@ -21,7 +21,7 @@ export default DS.JSONAPISerializer.extend({
   extractRelationships(modelClass, resourceHash) {
     let relationships = this._super(modelClass, resourceHash);
     if (hasLinks(relationships)) {
-      relationships = cleanupLinks(modelClass, relationships);
+      relationships = cleanupLinksForSyncRelationships(modelClass, relationships);
     }
     return relationships;
   },

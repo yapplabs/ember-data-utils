@@ -1,8 +1,8 @@
 import parseQueryToFunction from './parse-query-to-function'; 
-import cleanupLinks, { hasLinks } from './cleanup-links'; 
+import cleanupLinksForSyncRelationships, { hasLinks } from './cleanup-links-for-sync-relationships'; 
 
 export { 
   parseQueryToFunction,
-  cleanupLinks,
+  cleanupLinksForSyncRelationships,
   hasLinks
 }
