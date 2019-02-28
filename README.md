@@ -5,6 +5,14 @@ A collection of utilities, ergonomic improvements, and components for use with e
 
 It is currently a work-in-progress of extracting things from our apps that we've found useful. We'll publish to NPM once we feel like it's stable and properly tested.
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
@@ -17,6 +25,12 @@ Usage
 ------------------------------------------------------------------------------
 
 [Longer description of how to use the addon in apps.]
+
+
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
 License

@@ -6,10 +6,11 @@
  *
  * See: https://discuss.emberjs.com/t/ember-data-jsonapi-and-known-to-be-empty-relationships-that-are-definitely-not-empty/16219
  * 
- * @private
- * @method cleanupLinks
+ * @function cleanupLinksForSyncRelationships
+ * @export default
  * @param {EmberDataModel} modelClass the ember-data model class
- * @param {object} resourceHash 
+ * @param {object} relationshipsHash 
+ * @return {object} the relationshipsHash with link keys removed
  */
 export default function cleanupLinksForSyncRelationships(modelClass, relationshipHash) {
   for (let relationshipName in relationshipHash) {
@@ -24,8 +25,8 @@ export default function cleanupLinksForSyncRelationships(modelClass, relationshi
 }
 
 /**
- * @public
- * @method _hasLinks
+ * @function hasLinks
+ * @export named
  * @param {object} relationships 
  */
 export function hasLinks(relationships) {
@@ -33,8 +34,8 @@ export function hasLinks(relationships) {
 }
 
 /**
- * @public
- * @method _isRelationshipSync
+ * @function isRelationshipSync
+ * @export named
  * @param {EmberDataModel} modelClass the ember-data model class
  * @param {string} relationshipName 
  */

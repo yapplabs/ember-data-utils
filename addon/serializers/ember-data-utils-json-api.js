@@ -15,6 +15,8 @@ import { cleanupLinksForSyncRelationships, hasLinks } from 'ember-data-utils/uti
  */
 export default DS.JSONAPISerializer.extend({
   /**
+   * @public
+   * @method extractRelationships
    * @param {EmberDataModel} modelClass the ember-data model class
    * @param {object} resourceHash 
    */

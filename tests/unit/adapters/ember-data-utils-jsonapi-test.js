@@ -7,7 +7,7 @@ module('Unit | Adapter | ember-data-utils-jsonapi', function(hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function(){
-    adapter = this.owner.lookup('adapter:ember-data-utils-jsonapi');
+    adapter = this.owner.lookup('adapter:ember-data-utils-json-api');
     adapter.include = ['image']
   });
 
