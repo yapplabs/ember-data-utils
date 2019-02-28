@@ -1,7 +1,9 @@
-ember-data-utils
+ember-data-utils 
 ==============================================================================
 
-[Short description of the addon.]
+A collection of utilities, ergonomic improvements, and components for use with ember-data.
+
+It is currently a work-in-progress of extracting things from our apps that we've found useful. We'll publish to NPM once we feel like it's stable and properly tested.
 
 Installation
 ------------------------------------------------------------------------------
