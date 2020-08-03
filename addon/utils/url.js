@@ -7,7 +7,7 @@ import { isEmpty } from '@ember/utils';
  * @param {string} url
  */
 export function appendToQueryParam(urlString, param, newValue) {
-  let url = new URL(urlString);
+  let url = new URL(urlString, document.body.baseURI);
   if (isEmpty(newValue)) {
     return url.href;
   }
