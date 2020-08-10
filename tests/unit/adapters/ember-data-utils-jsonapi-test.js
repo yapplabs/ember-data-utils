@@ -37,5 +37,6 @@ module('Unit | Adapter | ember-data-utils-jsonapi', function(hooks) {
     skip('with pagination');
     skip('with filters');
     skip('with includes');
+    skip('with sort');
   })
 });

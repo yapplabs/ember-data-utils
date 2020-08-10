@@ -53,6 +53,7 @@ export default DS.JSONAPIAdapter.extend({
     let jsonApiQuery = {};
     jsonApiQuery = this._applyPagination(jsonApiQuery, query);
     jsonApiQuery = this._applySupportedFilters(jsonApiQuery, query);
+    jsonApiQuery = this._applySort(jsonApiQuery, query);
     jsonApiQuery = this._applyIncludes(jsonApiQuery);
 
     return this._super(store, type, jsonApiQuery);
@@ -122,6 +123,13 @@ export default DS.JSONAPIAdapter.extend({
       }
     });
 
+    return jsonApiQueryParams;
+  },
+
+  _applySort(jsonApiQueryParams, rawQueryParams) {
+    if (rawQueryParams.sort) {
+      jsonApiQueryParams.sort = rawQueryParams.sort;
+    }
     return jsonApiQueryParams;
   },
 
