@@ -1,0 +1,7 @@
+{{did-update this.didQueryUpdate @query @modelType}}
+{{yield (hash
+    isLoading=this.loadDataTask.isRunning
+    sortedModels=this.sortedModels
+    isEmpty=(eq this.sortedModels.length 0)
+    refresh=this.refresh
+)}}
