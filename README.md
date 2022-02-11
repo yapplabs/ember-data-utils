@@ -1,4 +1,4 @@
-ember-data-utils 
+ember-data-utils *No Longer Maintained*
 ==============================================================================
 
 A collection of utilities, ergonomic improvements, and components for use with ember-data.
