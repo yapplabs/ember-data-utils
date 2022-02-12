@@ -1,4 +1,4 @@
-import DS from 'ember-data';
+import { JSONAPIAdapter } from '@ember/data';
 import { camelize } from '@ember/string';
 import { isEmpty } from '@ember/utils';
 import { appendToQueryParam } from 'ember-data-utils/utils/url';
@@ -26,13 +26,13 @@ import { getOwner } from '@ember/application';
   ```
   @class EmberDataUtilsJSONAPIAdapter
  */
-export default DS.JSONAPIAdapter.extend({
+export class EmberDataUtilsJSONAPIAdapter extends JSONAPIAdapter {
   /**
     List of query param keys that your resource supports filtering on.
     Extend your base class for specific models to declare.
     @field {Array} supportedFilters
    */
-  supportedFilters: [], // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
+  supportedFilters = []; // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
 
   /**
     Array of includes to always include when querying a particular model.
@@ -40,7 +40,7 @@ export default DS.JSONAPIAdapter.extend({
 
     @field {Array} include
    */
-  include: [], // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
+  include = []; // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
 
   /**
    * @public
@@ -56,8 +56,8 @@ export default DS.JSONAPIAdapter.extend({
     jsonApiQuery = this._applySort(jsonApiQuery, query);
     jsonApiQuery = this._applyIncludes(jsonApiQuery);
 
-    return this._super(store, type, jsonApiQuery);
-  },
+    return super.query(store, type, jsonApiQuery);
+  }
 
   /**
    * queryRecord and findRecord use buildQuery to add includes to
@@ -70,7 +70,7 @@ export default DS.JSONAPIAdapter.extend({
    */
   buildQuery(snapshot) {
     let { include } = this;
-    let query = this._super(snapshot);
+    let query = super.buildQuery(snapshot);
 
     if (!include.length) {
       return query;
@@ -82,17 +82,17 @@ export default DS.JSONAPIAdapter.extend({
     query.include = combinedUniqueIncludes.join(',');
 
     return query;
-  },
+  }
 
   findHasMany(store, snapshot, url, relationship) {
     let adapter = this._adapterForRelationship(relationship.type);
     let updatedUrl = appendToQueryParam(url, 'include', adapter.include)
-    return this._super(store, snapshot, updatedUrl, relationship);
-  },
+    return super.findHasMany(store, snapshot, updatedUrl, relationship);
+  }
 
   _adapterForRelationship(type) {
     return getOwner(this).lookup(`adapter:${type}`);
-  },
+  }
 
   /**
    * Mutate the `jsonApiQueryParams` object with pagination related keys from `rawQueryParams` object
@@ -113,7 +113,7 @@ export default DS.JSONAPIAdapter.extend({
       }
     });
     return jsonApiQueryParams;
-  },
+  }
 
   _applySupportedFilters(jsonApiQueryParams, rawQueryParams) {
     this.supportedFilters.forEach(key => {
@@ -124,14 +124,14 @@ export default DS.JSONAPIAdapter.extend({
     });
 
     return jsonApiQueryParams;
-  },
+  }
 
   _applySort(jsonApiQueryParams, rawQueryParams) {
     if (rawQueryParams.sort) {
       jsonApiQueryParams.sort = rawQueryParams.sort;
     }
     return jsonApiQueryParams;
-  },
+  }
 
   _applyIncludes(jsonApiQueryParams) {
     if (!isEmpty(this.include)) {
@@ -139,4 +139,4 @@ export default DS.JSONAPIAdapter.extend({
     }
     return jsonApiQueryParams;
   }
-});
+}

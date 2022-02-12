@@ -1,4 +1,4 @@
-import DS from 'ember-data';
+import { JSONAPISerializer } from '@ember/data';
 import { cleanupLinksForSyncRelationships, hasLinks } from 'ember-data-utils/utils'
 
 /**
@@ -13,7 +13,7 @@ import { cleanupLinksForSyncRelationships, hasLinks } from 'ember-data-utils/uti
 
   @class EmberDataUtilsJSONAPISerializer
  */
-export default DS.JSONAPISerializer.extend({
+export class EmberDataUtilsJSONAPISerializer extends JSONAPISerializer {
   /**
    * @public
    * @method extractRelationships
@@ -21,11 +21,10 @@ export default DS.JSONAPISerializer.extend({
    * @param {object} resourceHash 
    */
   extractRelationships(modelClass, resourceHash) {
-    let relationships = this._super(modelClass, resourceHash);
+    let relationships = super.extractRelationships(modelClass, resourceHash);
     if (hasLinks(relationships)) {
       relationships = cleanupLinksForSyncRelationships(modelClass, relationships);
     }
     return relationships;
-  },
-
-});
+  }
+}
